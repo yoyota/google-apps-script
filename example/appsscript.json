@@ -1,0 +1,13 @@
+{
+  "timeZone": "Asia/Seoul",
+  "dependencies": {
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "executionApi": {
+    "access": "ANYONE"
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/script.external_request"
+  ],
+  "runtimeVersion": "V8"
+}
