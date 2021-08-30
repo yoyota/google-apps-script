@@ -12,7 +12,6 @@ function getCalendar() {
 
 function getMomentEvents(): GoogleAppsScript.Calendar.CalendarEvent[] {
   const now = new Date()
-  console.log(now)
   const oneDayAgo = new Date()
   oneDayAgo.setDate(now.getDate() - 1)
   console.log(oneDayAgo)
@@ -22,6 +21,11 @@ function getMomentEvents(): GoogleAppsScript.Calendar.CalendarEvent[] {
     .filter(
       (event) => event.getStartTime().getTime() === event.getEndTime().getTime()
     )
+}
+
+function test() {
+  const calendars = CalendarApp.getAllOwnedCalendars()
+  calendars[0].getName()
 }
 
 export { getCalendar, getMomentEvents }
