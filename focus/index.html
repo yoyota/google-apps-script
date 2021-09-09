@@ -17,13 +17,30 @@
 </head>
 
 <body>
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true"
-        style="position: absolute; top: 0; right: 0">
+    <div id="success-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+        style="position: fixed; top: 35%; left: 15%; min-width:70%;">
         <div class="toast-header">
-            <strong class="mr-auto">Success</strong>
+            <h1 id="toast-header" class="display-1 text-primary">
+                Success
+            </h1>
         </div>
         <div class="toast-body">
-            Event is created
+            <h1 id="toast-body" class="display-2 text-primary">
+                Event is created
+            </h1>
+        </div>
+    </div>
+    <div id="failure-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+        style="position: fixed; top: 35%; left: 15%; min-width:70%;">
+        <div class="toast-header">
+            <h1 id="toast-header" class="display-1 text-danger">
+                Failure
+            </h1>
+        </div>
+        <div class="toast-body">
+            <h1 id="toast-body" class="display-2 text-danger">
+                Failed to create event
+            </h1>
         </div>
     </div>
     <div class="vh-100">
@@ -46,11 +63,9 @@
 <script>
     function addEvent(title) {
         google.script.run.withSuccessHandler(() => {
-            $(".toast").toast("show")
+            $("#success-toast").toast("show")
         }).withFailureHandler(() => {
-            $(".toast-header").text("Failure")
-            $(".toast-body").text("Failed to create event")
-            $(".toast").toast("show")
+            $("#failure-toast").toast("show")
         }).doCreateEvent(title)
     }
     $("#start").on("click", () => addEvent("start"))
