@@ -14,7 +14,8 @@ function main() {
         calendar.createEvent(
           prev.getTitle(),
           prev.getStartTime(),
-          curr.getEndTime()
+          curr.getEndTime(),
+          { description: prev.getDescription() }
         )
       }
       curr.deleteEvent()
