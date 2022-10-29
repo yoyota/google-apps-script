@@ -9,3 +9,9 @@ function doCreateEvent(title: string) {
   const now = new Date()
   calendar.createEvent(title, now, now)
 }
+
+function doPost(e) {
+  Logger.log(e)
+  doCreateEvent("end")
+  doCreateEvent(e.parameter.title)
+}
