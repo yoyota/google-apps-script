@@ -12,6 +12,5 @@ function doCreateEvent(title: string) {
 
 function doPost(e) {
   Logger.log(e)
-  doCreateEvent("end")
   doCreateEvent(e.parameter.title)
 }
