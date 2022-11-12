@@ -1,8 +1,15 @@
-import { getCalendar, getMomentEvents } from "./calendar"
+/* eslint-disable no-use-before-define */
+import { getMomentEvents } from "./calendar"
 
 function main() {
-  const calendar = getCalendar()
-  const events = getMomentEvents()
+  const dailyCalendar = CalendarApp.getCalendarById(
+    "04qk3cmbmdnc2o9qvp3k67b3fc@group.calendar.google.com"
+  )
+  createNewDailyEvents(dailyCalendar)
+}
+
+function createNewDailyEvents(calendar: GoogleAppsScript.Calendar.Calendar) {
+  const events = getMomentEvents(calendar)
   events.forEach(
     (
       curr: GoogleAppsScript.Calendar.CalendarEvent,
@@ -15,7 +22,7 @@ function main() {
           prev.getTitle(),
           prev.getStartTime(),
           curr.getEndTime(),
-          { description: prev.getDescription() }
+          { location: prev.getLocation() }
         )
       }
       curr.deleteEvent()
